@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng hình chữ nhật</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1000px" height="1000px" style="border: 1px solid blue"></canvas>
+
+<script>
+    let Rectangle = function (a, b) {
+        this.a = a;
+        this.b = b;
+        this.getA = function () {
+            return a;
+        }
+        this.getB = function () {
+            return b;
+        }
+        this.getArea = function () {
+            return a * b;
+        }
+        this.getPerimeter = function () {
+            return (a + b) * 2;
+        }
+    }
+
+    function createRectangle() {
+        let rec = document.getElementById("myCanvas").getContext("2d");
+        //kich  thước hình chữ  nhật lấy random
+        let a =Math.floor(Math.random()* 200);
+        let b =Math.floor(Math.random()* 400);
+        //cach 2 lấy  kich thước
+        // let a =Number(prompt("nhập chiều rộng hình chữ nhật"));
+        // let b =Number(prompt("nhập chiều dài hình chữ nhật"));
+        //khai báo đối tượng
+        let rectangle = new Rectangle(a,b);
+
+        //lấy vị trí so với 2 cạnh
+        let x = 400;
+        let y = 400;
+        rec.beginPath();
+        rec.rect(x, y,rectangle.a,rectangle.b);
+        rec.stroke();
+        //in ra diiện tích  và chu vi
+        let are = rectangle.getArea();
+        let perimeter = rectangle.getPerimeter();
+        alert("Diện tích :"+are +"Chu vi :"+perimeter);
+
+    }
+
+    createRectangle();
+
+
+</script>
+</body>
+</html>
